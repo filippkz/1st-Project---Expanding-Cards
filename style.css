@@ -1,0 +1,66 @@
+@import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Muli', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0;
+}
+
+.container {
+  display: flex; /* puts all the children in a raw */
+  /* flex-direction: column; /* puts all children in a column */
+  width: 90vw;
+}
+
+.panel {
+  background-size: cover 100%; /* cover - for large screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 80vh;
+  border-radius: 50px; /* rounded corners */
+  color: #fff;
+  cursor: pointer;
+  flex: 0.5; /* Makes panes even */
+  margin: 10px; 
+  position: relative; /* necessary to put the position of children absolute */
+  transition: flex 0.7s ease-in; /* smooth transition */
+}
+
+.panel h3 { /* describing h3 element of panesl */
+  font-size: 24px;
+  position: absolute; /* the parent must be absolute */
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  opacity: 0;
+}
+
+.panel.active { /* if panel has active class */
+  flex: 5;
+}
+
+.panel.active h3 { /* if panel has active class */
+  opacity: 1;
+  transition: opacity 0.3s ease-in 0.4s;
+}
+
+/* the following only for screen < 480 */
+@media(max-width: 480px) {
+  .container {
+    width: 100vw;
+  }
+
+  .panel:nth-of-type(4), /* : -> pseudo selector, take panel 4 & 5 */
+  .panel:nth-of-type(5) {
+    display: none;
+  } 
+}
+
